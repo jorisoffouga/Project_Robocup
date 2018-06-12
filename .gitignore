@@ -59,3 +59,6 @@ pom.xml.tag
 Host/src/
 Host/*.O
 Host/main
+Host/main.o
+Host/move.o
+Host/serial.o
