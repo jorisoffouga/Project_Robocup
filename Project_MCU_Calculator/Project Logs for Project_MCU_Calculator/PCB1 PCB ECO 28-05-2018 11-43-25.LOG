@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=BKGD_I Pin=T1-2
+Removed Pin From Net: NetName=BKGD Pin=U5-32
+Change Net Name : Old Net Name=BKGD New Net Name=BKGD_Buf
+Added Pin To Net: NetName=BKGD Pin=T1-2
+Added Pin To Net: NetName=BKGD Pin=U5-32
+Added Net: Name=BKGD
+Added Member To Class: ClassName=Sheet1 Member=Component R7 47R

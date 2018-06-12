@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=VUSB Pin=U4-3
+Removed Pin From Net: NetName=VDD Pin=U4-5
+Change Component Comment : Designator=U4 Old Comment=LD39015M33R New Comment=TC1262
+Added Pin To Net: NetName=VDD Pin=U4-3
+Added Pin To Net: NetName=GND Pin=U4-4
+Added Member To Class: ClassName=Sheet1 Member=Component U5 MC9S08QE16

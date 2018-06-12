@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=GND Pin=U4-3
+Added Pin To Net: NetName=VUSB Pin=U4-3

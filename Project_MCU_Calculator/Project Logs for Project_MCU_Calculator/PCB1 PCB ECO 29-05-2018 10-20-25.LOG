@@ -1,0 +1,20 @@
+Added Component: Designator=U5(LQFP_32)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetD2_2 Pin=U5-3
+Added Pin To Net: NetName=VDD Pin=U5-4
+Added Pin To Net: NetName=GND Pin=U5-5
+Added Pin To Net: NetName=GND Pin=U5-6
+Added Pin To Net: NetName=EXTAL Pin=U5-7
+Added Pin To Net: NetName=XTAL Pin=U5-8
+Added Pin To Net: NetName=MISO Pin=U5-10
+Added Pin To Net: NetName=SS*1 Pin=U5-11
+Added Pin To Net: NetName=SS*2 Pin=U5-12
+Added Pin To Net: NetName=MOSI Pin=U5-15
+Added Pin To Net: NetName=SCLK Pin=U5-16
+Added Pin To Net: NetName=Tx Pin=U5-17
+Added Pin To Net: NetName=Rx Pin=U5-18
+Added Pin To Net: NetName=SCL Pin=U5-23
+Added Pin To Net: NetName=SDA Pin=U5-24
+Added Pin To Net: NetName=RESET Pin=U5-31
+Added Pin To Net: NetName=BKGD Pin=U5-32
+Added Member To Class: ClassName=Sheet1 Member=Component U5 MC9S08QE16

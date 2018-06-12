@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=GND Pin=U3-5
+Change Component Footprint: Designator=U3 Old Footprint=USB New Footprint=USB_B
+Change Component Comment : Designator=U3 Old Comment=Mini_USB New Comment=USB B
+Added Pin To Net: NetName=GND Pin=U3-4

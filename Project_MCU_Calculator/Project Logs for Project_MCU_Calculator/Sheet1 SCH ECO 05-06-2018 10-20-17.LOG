@@ -1,0 +1,2 @@
+Remove Pin=J1-2 From Net=Tx
+Remove Pin=J1-3 From Net=Rx

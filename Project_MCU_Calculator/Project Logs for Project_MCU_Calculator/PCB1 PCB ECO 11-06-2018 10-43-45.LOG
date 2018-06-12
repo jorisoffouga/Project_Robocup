@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=NetD1_2 Pin=U1-6
+Change Component Comment : Designator=J1 Old Comment=Header 4 New Comment=Header MCU->MCU
+Change Component Comment : Designator=J2 Old Comment=Header New Comment=Header IMU
+Change Component Comment : Designator=J3 Old Comment=Header New Comment=Header OPTIQUE
+Change Component Comment : Designator=J4 Old Comment=Header New Comment=Header OPTIQUE
+Added Pin To Net: NetName=NetD1_2 Pin=U1-7

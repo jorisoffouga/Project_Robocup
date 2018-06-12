@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=NetC1_1 Pin=Y1-1
+Removed Pin From Net: NetName=NetC3_1 Pin=Y1-2
+Removed Pin From Net: NetName=XTAL Pin=Y2-1
+Removed Pin From Net: NetName=EXTAL Pin=Y2-2
+Added Component: Designator=Y1(Quartz)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Y2(Quartz 32.768kHZ)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetC3_1 Pin=Y1-1
+Added Pin To Net: NetName=NetC1_1 Pin=Y1-2
+Added Pin To Net: NetName=XTAL Pin=Y2-1
+Added Member To Class: ClassName=Sheet1 Member=Component J1 Header 3
+Added Member To Class: ClassName=Sheet1 Member=Component J4 Header

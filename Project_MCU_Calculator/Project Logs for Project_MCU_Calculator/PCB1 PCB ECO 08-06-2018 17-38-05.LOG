@@ -1,0 +1,6 @@
+Added Component: Designator=T1(Transistor)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetR12_2 Pin=T1-1
+Added Pin To Net: NetName=BKGD Pin=T1-2
+Added Pin To Net: NetName=BKGD_Buf Pin=T1-3
+Added Member To Class: ClassName=Sheet1 Member=Component T1 Transistor
