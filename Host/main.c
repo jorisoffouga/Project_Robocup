@@ -6,12 +6,12 @@
 #include <stdint.h> // Standard types
 #include <stdlib.h>
 #include "move.h"
-#include "../../Linux_Serial/serial.h"
+#include "serial.h"
 
 void display_help(const char *arg)
 {
     fprintf(stderr, "Usage: %s \n", arg);
-    fprintf(stderr, "Example: %s /dev/ttyUSB0 9600\n", arg);
+    fprintf(stderr, "Example: %s sudo /dev/ttyUSB0 9600\n", arg);
 }
 
 int main(int argc, char *agrv[])
@@ -20,13 +20,13 @@ int main(int argc, char *agrv[])
     char buffer[100];
     char *message="MPU6050 \r";
 
-    if (argc < 2)
+    if (argc < 3)
     {
         display_help(agrv[0]);
         return -1;
     }
 
-    fd = open_serial(agrv[1], atoi(agrv[2]));
+    fd = open_serial("/dev/ttyUSB0", 115200);
 
     if (fd < 0)
     {
