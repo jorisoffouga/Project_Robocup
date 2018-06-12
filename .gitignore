@@ -54,3 +54,8 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
+
+# Other Files 
+Host/src/
+Host/*.O
+Host/main
