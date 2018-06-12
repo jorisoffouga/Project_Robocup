@@ -10,6 +10,8 @@
 
 # Hardware 
 MCU  based on architecture CISC NXP family 
+
 USBDM base on HCS08 device [UBSM](https://github.com/podonoghue/usbdm-hcs08) is integrated directly on board
+
 IMU : MPU6050 on module GY-521
 Mouse Optical Sensor : ADNS3080 on module CJMCU  
