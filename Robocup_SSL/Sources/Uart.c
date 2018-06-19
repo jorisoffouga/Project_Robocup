@@ -21,6 +21,7 @@ ISR( isr_uart_rx){
       uart_isr.nb_data++;
   }
 }
+
 void uart_init(unsigned short baudrate,enum data nbdata,enum parite nparite,enum transmission nte,enum reception nre){
   SCI1BD=(unsigned int)((FBUS/(16.0*(float)baudrate))+0.5);//Calcul du Baudrate
   SCI1C1_M=nbdata;       //Selection configuration format data
@@ -31,28 +32,27 @@ void uart_init(unsigned short baudrate,enum data nbdata,enum parite nparite,enum
 
 }
 
-void init_uart_buffer(uart_type *uart, unsigned char *uart_buffer,unsigned char nb_data){
+void uart_send(unsigned char *data,unsigned char nb_data){
+  uart_type uart;
   unsigned char i=0;
-  uart->p_write=NULL;
+  uart.p_write=NULL;
   for (i = 0; i < NB_DATA_; ++i) {
-      uart->buffer[i]=0;
+      uart.buffer[i]=0;
   }
 
   for (i = 0; i < nb_data; ++i) {
-      uart->buffer[i]=uart_buffer[i];
+      uart.buffer[i]=data[i];
   }
-  uart->p_write=uart->buffer;
-  uart->nb_data=nb_data;
-}
+  uart.p_write=uart.buffer;
+  uart.nb_data=nb_data;
 
-void uart_send(uart_type *uart){
-  while(uart->nb_data!=0){
+  while(uart.nb_data!=0){
       if (SCI1S1_TDRE) {
-          SCI1D=*uart->p_write;
+          SCI1D=*uart.p_write;
       }
-      if ((uart->p_write++)==(&uart->buffer[NB_DATA_-1])) {
-          uart->p_write=uart->buffer;
+      if ((uart.p_write++)==(&uart.buffer[NB_DATA_-1])) {
+          uart.p_write=uart.buffer;
       }
-      uart->nb_data--;
+      uart.nb_data--;
   }
 }

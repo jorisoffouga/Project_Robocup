@@ -24,6 +24,5 @@ typedef struct {
   unsigned char nb_data;
 }uart_type;
 
-void uart_send(uart_type *uart);
-void init_uart_buffer(uart_type *uart, unsigned char *uart_buffer,unsigned char nb_data);
+void uart_send(unsigned char *data,unsigned char nb_data);
 #endif /* UART_H_ */
