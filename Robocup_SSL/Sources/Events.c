@@ -33,6 +33,23 @@
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
+/*
+** ===================================================================
+**     Event       :  EInt1_OnInterrupt (module Events)
+**
+**     Component   :  EInt1 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void EInt1_OnInterrupt(void)
+{
+  /* place your EInt1 interrupt procedure body here*/
+}
+
 /* END Events */
 
 /*!

@@ -30,9 +30,11 @@
 /* Including needed modules to compile this module/procedure */
 #include "Cpu.h"
 #include "Events.h"
-#include "CI2C1.h"
 #include "SCI1.h"
+#include "CI2C1.h"
 #include "TPM1.h"
+#include "EInt1.h"
+#include "PWM1.h"
 /* Include shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -55,7 +57,7 @@ ISR(ISR_IMU){
   gx=mpu6050.gx;
   gy=mpu6050.gy;
   gz=mpu6050.gz;
-  filter(ax,ay,az,gx,gy,gz,timer,&angleX,&angleY,&angleZ); 
+  //filter(ax,ay,az,gx,gy,gz,timer,&angleX,&angleY,&angleZ); 
   TPM1C0SC_CH0F = 0;
   
 }
@@ -67,23 +69,22 @@ void main(void)
   //unsigned char update_imu=1;
   adns3080 sensor;
   mpu6050_t mpu6050;
-  uart_type uart;
   unsigned char message[2]={0xAA,0x55};
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
   uart_init(115200,huit_bits,off_pe,on_te,on_re);
+  spi_init(enable,master,low,middle_front,msb,manual,i_o,rate_divisor_8);
   mpu6050_init();
   mpu6050_get_device(&mpu6050);
   //adns3080_init(&sensor);
   //adns3080_get_device(&sensor);
   //clear_screen();
   for(;;){
-      //init_uart_buffer(&uart,message,2);
       //mpu6050_update(&mpu6050);
       //put_message(4,5,message,8);
       //put_number((100*100/255),4,5);
-      //uart_send(&uart); 
+      uart_send(message,2); 
       //update_sensor(&sensor);
   }
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/

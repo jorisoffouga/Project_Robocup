@@ -34,10 +34,27 @@
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
-#include "CI2C1.h"
+#include "PE_Timer.h"
 #include "SCI1.h"
+#include "CI2C1.h"
 #include "TPM1.h"
+#include "EInt1.h"
+#include "PWM1.h"
 
+
+void EInt1_OnInterrupt(void);
+/*
+** ===================================================================
+**     Event       :  EInt1_OnInterrupt (module Events)
+**
+**     Component   :  EInt1 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
 
 /* END Events */
 #endif /* __Events_H*/

@@ -7,7 +7,7 @@
 **     Version     : Component 01.005, Driver 01.40, CPU db: 3.00.027
 **     Datasheet   : MC9S08QE32RM Rev. 3 Draft A 11/2009
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2018-06-12, 17:44, # CodeGen: 7
+**     Date/Time   : 2018-06-17, 19:28, # CodeGen: 17
 **     Abstract    :
 **         This component "MC9S08QE32_32" contains initialization 
 **         of the CPU and provides basic methods and events for 
@@ -66,13 +66,16 @@
 
 #pragma MESSAGE DISABLE C4002 /* WARNING C4002: Result not used is ignored */
 
-#include "CI2C1.h"
 #include "SCI1.h"
+#include "CI2C1.h"
 #include "TPM1.h"
+#include "EInt1.h"
+#include "PWM1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
+#include "PE_Timer.h"
 #include "Events.h"
 #include "Cpu.h"
 
@@ -203,8 +206,12 @@ void PE_low_level_init(void)
   /* SCGC2: DBG=1,FLS=1,IRQ=1,KBI=1,ACMP=1,RTC=1,??=1,SPI=1 */
   setReg8(SCGC2, 0xFFU);                
   /* Common initialization of the CPU registers */
-  /* PTADD: PTADD3=0,PTADD2=0 */
-  clrReg8Bits(PTADD, 0x0CU);            
+  /* PTADD: PTADD5=0,PTADD3=0,PTADD2=0,PTADD1=1 */
+  clrSetReg8Bits(PTADD, 0x2CU, 0x02U);  
+  /* PTAPE: PTAPE5=0 */
+  clrReg8Bits(PTAPE, 0x20U);            
+  /* PTAD: PTAD1=0 */
+  clrReg8Bits(PTAD, 0x02U);             
   /* PTASE: PTASE7=0,PTASE6=0,PTASE4=0,PTASE3=0,PTASE2=0,PTASE1=0,PTASE0=0 */
   clrReg8Bits(PTASE, 0xDFU);            
   /* PTBSE: PTBSE7=0,PTBSE6=0,PTBSE5=0,PTBSE4=0,PTBSE3=0,PTBSE2=0,PTBSE1=0,PTBSE0=0 */
@@ -226,15 +233,24 @@ void PE_low_level_init(void)
   /* PTEDD: PTEDD7=1,PTEDD6=1,PTEDD5=1,PTEDD4=1,PTEDD3=1,PTEDD2=1,PTEDD1=1,PTEDD0=1 */
   setReg8(PTEDD, 0xFFU);                
   /* ### Shared modules init code ... */
-  /* ### InternalI2C "CI2C1" init code ... */
-  CI2C1_Init();
   /* ### Init_SCI "SCI1" init code ... */
   /* ### Call "SCI1_Init();" init method in a user code, i.e. in the main code */
   /* ### Note:   To enable automatic calling of the "SCI1" init code here must be
                  set the property Call Init method to 'yes'.
    */
+  /* ### InternalI2C "CI2C1" init code ... */
+  CI2C1_Init();
   /* ### Init_TPM "TPM1" init code ... */
   TPM1_Init();
+  /* ### External interrupt "EInt1" init code ... */
+  /* IRQSC: ??=0,IRQPDD=1,IRQEDG=0,IRQPE=1,IRQF=0,IRQACK=0,IRQIE=0,IRQMOD=0 */
+  setReg8(IRQSC, 0x50U);                
+  /* IRQSC: IRQACK=1 */
+  setReg8Bits(IRQSC, 0x04U);            
+  /* IRQSC: IRQIE=1 */
+  setReg8Bits(IRQSC, 0x02U);            
+  /* ### Programable pulse generation "PWM1" init code ... */
+  PWM1_Init();
   CCR_lock = (byte)0;
   __EI();                              /* Enable interrupts */
 }

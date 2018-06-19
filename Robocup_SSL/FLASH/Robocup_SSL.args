@@ -1,0 +1,26 @@
+"$(ProjDirPath)/Project_Settings/Linker_Files/ProcessorExpert.prm"
+-M
+-ViewHidden
+-WmsgFob"%f%e:%l:%k:%d %m\n"
+-WmsgSd1100
+-WmsgSd1912 
+-Add("$(ProjDirPath)/FLASH/Sources/Adns3080_c.obj"
+"$(ProjDirPath)/FLASH/Sources/Events_c.obj"
+"$(ProjDirPath)/FLASH/Sources/FP3_c.obj"
+"$(ProjDirPath)/FLASH/Sources/MPU6050_c.obj"
+"$(ProjDirPath)/FLASH/Sources/Move_ssl_c.obj"
+"$(ProjDirPath)/FLASH/Sources/PID_c.obj"
+"$(ProjDirPath)/FLASH/Sources/Spi_c.obj"
+"$(ProjDirPath)/FLASH/Sources/Uart_c.obj"
+"$(ProjDirPath)/FLASH/Sources/bsp_c.obj"
+"$(ProjDirPath)/FLASH/Sources/kalman_c.obj"
+"$(ProjDirPath)/FLASH/Sources/main_c.obj"
+"$(ProjDirPath)/FLASH/Project_Settings/Startup_Code/start08_c.obj"
+"$(ProjDirPath)/FLASH/Generated_Code/CI2C1_c.obj"
+"$(ProjDirPath)/FLASH/Generated_Code/Cpu_c.obj"
+"$(ProjDirPath)/FLASH/Generated_Code/EInt1_c.obj"
+"$(ProjDirPath)/FLASH/Generated_Code/IO_Map_c.obj"
+"$(ProjDirPath)/FLASH/Generated_Code/SCI1_c.obj"
+"$(ProjDirPath)/FLASH/Generated_Code/TPM1_c.obj"
+"$(ProjDirPath)/FLASH/Generated_Code/Vectors_c.obj"
+"$(MCUToolsBaseDirEnv)/lib/hc08c/lib/ansifs.lib" )
