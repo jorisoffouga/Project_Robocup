@@ -45,7 +45,8 @@ typedef struct{
 void get_direction(robot_type *robot,signed char x, signed char y, unsigned char speed);
 void calcul_speed_motor(robot_type *robot);
 void move(robot_type *robot);
-
+void filter(unsigned short ax, unsigned short ay, unsigned short az, unsigned short gx, unsigned short gy, unsigned short gz, float dt, 
+    double *angleX, double *angleY, double *angleZ);
 
 
 
