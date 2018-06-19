@@ -18,6 +18,7 @@ int main(int argc, char *agrv[])
 {
     int i, fd = 0;
     char buffer[100];
+    double angleX,angle,Y,angleZ;
     char *message="MPU6050 \r";
 
     if (argc < 3)
@@ -26,7 +27,7 @@ int main(int argc, char *agrv[])
         return -1;
     }
 
-    fd = open_serial("/dev/ttyUSB0", 115200);
+    fd = open_serial(agrv[1], atoi(agrv[2]));
 
     if (fd < 0)
     {
