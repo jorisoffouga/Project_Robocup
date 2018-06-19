@@ -22,6 +22,7 @@ void get_direction(robot_type *robot, signed char x, signed char y, unsigned cha
 	robot->motor_4.dmy = (float)(y * vector_m4y);
 	robot->motor_4.dmv = robot->motor_4.dmx + robot->motor_4.dmy;
 }
+
 void calcul_speed_motor(robot_type *robot)
 {
 
@@ -29,4 +30,28 @@ void calcul_speed_motor(robot_type *robot)
 	robot->motor_2.speed_motor = (unsigned short)(((float)(60 * robot->speed_robot * robot->motor_2.dmv)) / 0.1884);
 	robot->motor_3.speed_motor = (unsigned short)(((float)(60 * robot->speed_robot * robot->motor_3.dmv)) / 0.1884);
 	robot->motor_4.speed_motor = (unsigned short)(((float)(60 * robot->speed_robot * robot->motor_4.dmv)) / 0.1884);
+}
+
+void filter(unsigned short ax, unsigned short ay, unsigned short az, unsigned short gx, unsigned short gy, unsigned short gz, float dt,
+			double *angleX, double *angleY, double *angleZ)
+{
+	double aX, aY, aZ;
+	double gX, gY, gZ;
+
+	aX = sqrt((ay * ay) + (az * az));
+	aX = 58 * atan2(ax, aX);
+
+	aY = sqrt((ax * ax) + (az * az));
+	aY = 58 * atan2(ay, aY);
+
+	aZ = sqrt((ay * ay) + (az * az));
+	aZ = 58 * atan2(aZ, az);
+
+	gX = gX + (dt * gx);
+	gY = gY + (dt * gy);
+	gZ = gZ + (dt * gz);
+
+	*angleX = (0.04 * aX) + (0.96 * gX);
+	*angleY = (0.04 * aY) + (0.96 * gY);
+	*angleZ = (0.04 * aZ) + (0.96 * gZ);
 }
