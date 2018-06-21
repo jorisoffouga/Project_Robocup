@@ -1,7 +1,7 @@
 # Project_Robocup
  
  # Documentation 
- All datasheet of sensor and microcontroleur and Report of projet 
+ All datasheet of sensor and mcu and Report of projet 
  # Compile Application Host on linux
  Host / contains source codes to be used on PC
 
