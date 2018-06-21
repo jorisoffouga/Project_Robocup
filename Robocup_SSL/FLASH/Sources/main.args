@@ -15,4 +15,5 @@
 -WmsgFob"%f%e:%l:%k:%d %m\n"
 -TD2
 -Fd
+-O0
 -Cs08

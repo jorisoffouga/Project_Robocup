@@ -15,7 +15,6 @@ C_SRCS_QUOTED += \
 "../Sources/Spi.c" \
 "../Sources/Uart.c" \
 "../Sources/bsp.c" \
-"../Sources/kalman.c" \
 "../Sources/main.c" \
 
 C_SRCS += \
@@ -28,7 +27,6 @@ C_SRCS += \
 ../Sources/Spi.c \
 ../Sources/Uart.c \
 ../Sources/bsp.c \
-../Sources/kalman.c \
 ../Sources/main.c \
 
 OBJS += \
@@ -41,7 +39,6 @@ OBJS += \
 ./Sources/Spi_c.obj \
 ./Sources/Uart_c.obj \
 ./Sources/bsp_c.obj \
-./Sources/kalman_c.obj \
 ./Sources/main_c.obj \
 
 OBJS_QUOTED += \
@@ -54,7 +51,6 @@ OBJS_QUOTED += \
 "./Sources/Spi_c.obj" \
 "./Sources/Uart_c.obj" \
 "./Sources/bsp_c.obj" \
-"./Sources/kalman_c.obj" \
 "./Sources/main_c.obj" \
 
 C_DEPS += \
@@ -67,7 +63,6 @@ C_DEPS += \
 ./Sources/Spi_c.d \
 ./Sources/Uart_c.d \
 ./Sources/bsp_c.d \
-./Sources/kalman_c.d \
 ./Sources/main_c.d \
 
 C_DEPS_QUOTED += \
@@ -80,7 +75,6 @@ C_DEPS_QUOTED += \
 "./Sources/Spi_c.d" \
 "./Sources/Uart_c.d" \
 "./Sources/bsp_c.d" \
-"./Sources/kalman_c.d" \
 "./Sources/main_c.d" \
 
 OBJS_OS_FORMAT += \
@@ -93,7 +87,6 @@ OBJS_OS_FORMAT += \
 ./Sources/Spi_c.obj \
 ./Sources/Uart_c.obj \
 ./Sources/bsp_c.obj \
-./Sources/kalman_c.obj \
 ./Sources/main_c.obj \
 
 
@@ -175,22 +168,9 @@ Sources/bsp_c.obj: ../Sources/bsp.c
 	@echo 'Finished building: $<'
 	@echo ' '
 
-Sources/kalman_c.obj: ../Sources/kalman.c
-	@echo 'Building file: $<'
-	@echo 'Executing target #10 $<'
-	@echo 'Invoking: HCS08 Compiler'
-	"$(HC08ToolsEnv)/chc08" -ArgFile"Sources/kalman.args" -ObjN="Sources/kalman_c.obj" "$<" -Lm="Sources/kalman_c.d" -LmCfg=xilmou
-	@echo 'Finished building: $<'
-	@echo ' '
-
-Sources/kalman_c.d: ../Sources/kalman.c
-	@echo 'Regenerating dependency file: $@'
-	
-	@echo ' '
-
 Sources/main_c.obj: ../Sources/main.c
 	@echo 'Building file: $<'
-	@echo 'Executing target #11 $<'
+	@echo 'Executing target #10 $<'
 	@echo 'Invoking: HCS08 Compiler'
 	"$(HC08ToolsEnv)/chc08" -ArgFile"Sources/main.args" -ObjN="Sources/main_c.obj" "$<" -Lm="$(@:%.obj=%.d)" -LmCfg=xilmou
 	@echo 'Finished building: $<'

@@ -1,5 +1,4 @@
 
-
 Sources/Uart_c.obj: \
 	D:/Project_Robocup/Robocup_SSL/Project_Headers/../Sources/Uart.c \
 	D:/Project_Robocup/Robocup_SSL/Generated_Code/IO_Map.h \

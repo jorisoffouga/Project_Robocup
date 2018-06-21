@@ -31,7 +31,7 @@ void calcul_speed_motor(robot_type *robot)
 	robot->motor_3.speed_motor = (unsigned short)(((float)(60 * robot->speed_robot * robot->motor_3.dmv)) / 0.1884);
 	robot->motor_4.speed_motor = (unsigned short)(((float)(60 * robot->speed_robot * robot->motor_4.dmv)) / 0.1884);
 }
-
+/*
 void filter(unsigned short ax, unsigned short ay, unsigned short az, unsigned short gx, unsigned short gy, unsigned short gz, float dt,
 			double *angleX, double *angleY, double *angleZ)
 {
@@ -55,3 +55,4 @@ void filter(unsigned short ax, unsigned short ay, unsigned short az, unsigned sh
 	*angleY = (0.04 * aY) + (0.96 * gY);
 	*angleZ = (0.04 * aZ) + (0.96 * gZ);
 }
+*/

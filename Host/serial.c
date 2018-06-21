@@ -7,6 +7,7 @@
 #include <string.h>  // String function definitions
 #include <sys/ioctl.h>
 #include <stdint.h> // Standard types
+#include "serial.h"
 
 int open_serial(const char *portname,int baudrate)
 {
@@ -81,7 +82,7 @@ int write_serial(int fd, char *data)
 	return 0;
 }
 
-int read_serial(int fd, char *data, char until, char nb_data)
+int read_serial(int fd, char *data, char until, char nb_data,int timeout)
 {
 	char buffer[1];
 	int i = 0;
@@ -89,14 +90,22 @@ int read_serial(int fd, char *data, char until, char nb_data)
 	do
 	{
 		int temp = read(fd, buffer, 1);
-		if (temp == -1)
-			return -1;
+		if (temp == -1) return -1;
+		if(temp==0){
+			usleep(1*1000);
+			timeout--;
+			if(timeout== 0) return -2;
+			continue;
 
+		}
 		data[i] = buffer[0];
 		i++;
 	} while (buffer[0] != until && i < nb_data );
-	for (i = 0; data[i] != until && i < nb_data+1; i++); /* delete end of string character */
-	data[i]=0;
+
+	/*for (i = 0; data[i] != until && i < nb_data+1; i++); /* delete end of string character */
+	//data[i]=0;
+	
+	
 
 	return 0;
 }

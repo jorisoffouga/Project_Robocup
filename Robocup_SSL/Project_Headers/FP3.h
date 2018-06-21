@@ -21,11 +21,13 @@
 #include "bsp.h"
 #include "math.h"
 #include "Uart.h"
-#include "kalman.h"
+
 
 #define NULL ((void*)0)
 #define LOW 0
 #define HIGH 1
 extern void delai(unsigned short time);
+void filter (unsigned short ax, unsigned short ay, unsigned short az, unsigned short gx, 
+    unsigned short gy, unsigned short gz, float *anglex, float *angley, float *anglez);
 
 #endif /* FP3_H_ */

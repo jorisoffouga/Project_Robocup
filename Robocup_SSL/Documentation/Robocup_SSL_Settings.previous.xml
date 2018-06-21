@@ -686,7 +686,7 @@ asm(BGND);
         <Automatic_stop_condition v="yes" />
         <group name="Initialization">
           <Address_mode v="7-bit addressing" />
-          <Target_slave_address_init v="8" />
+          <Target_slave_address_init v="104" />
         </group>
       </boolgroup>
       <boolgroup name="SLAVE mode" v="Disabled" />
@@ -695,10 +695,10 @@ asm(BGND);
         <SCL_pin v="PTA3_KBI1P3_SCL_ADP3" />
       </group>
       <Internal_frequency__multiplier_factor_ v="25.165824 MHz" />
-      <Bits_0_2_of_Frequency_divider_register v="010" />
-      <Bits_3_5_of_Frequency_divider_register v="010" />
-      <SCL_frequency v="393.216 kHz" />
-      <SDA_Hold v="0.517 us" />
+      <Bits_0_2_of_Frequency_divider_register v="000" />
+      <Bits_3_5_of_Frequency_divider_register v="011" />
+      <SCL_frequency v="314.573 kHz" />
+      <SDA_Hold v="0.358 us" />
       <group name="Initialization">
         <Enabled_in_init_code v="yes" />
         <Events_enabled_in_init_ v="yes" />
@@ -764,8 +764,8 @@ asm(BGND);
           </enumgroup>
           <TPM1_Clock_Gate v="Enabled" />
           <Prescaler v="128" />
-          <Modulo_counter v="4000" />
-          <Period v="20.35 ms" />
+          <Modulo_counter v="2000" />
+          <Period v="10.177 ms" />
         </group>
         <Aligned v="Edge" />
         <list name="Channels" v="0">
@@ -792,93 +792,6 @@ asm(BGND);
     </Methods>
     <Events>
       <EmptySection_DummyValue />
-    </Events>
-  </Bean>
-  <Bean name="EInt1" type="ExtInt">
-    <Enabled v="Y" />
-    <Properties>
-      <Component_name v="EInt1" />
-      <Pin v="PTA5_IRQ_TPM1CLK_RESET" />
-      <Pull_resistor sel_value="no pull resistor">
-        
-autoselected pull
-
-        <EmptySection_DummyValue />
-      </Pull_resistor>
-      <Generate_interrupt_on sel_value="falling edge">
-        
-rising or falling edge
-
-        <EmptySection_DummyValue />
-      </Generate_interrupt_on>
-      <Invert_interrupt_trigger_condition v="no" />
-      <Interrupt v="Virq" />
-      <Interrupt_priority v="medium priority" />
-      <group name="Initialization">
-        <Enabled_in_init__code v="yes" />
-      </group>
-    </Properties>
-    <Methods>
-      <Enable v="don&amp;apos;t generate code" />
-      <Disable v="don&amp;apos;t generate code" />
-      <GetVal v="generate code" />
-      <SetEdge v="don&amp;apos;t generate code" />
-    </Methods>
-    <Events>
-      <Event_module_name v="Events" />
-      <event name="OnInterrupt" v="generate code">
-        <Event_procedure_name v="EInt1_OnInterrupt" />
-        <Priority v="same as interrupt" />
-      </event>
-    </Events>
-  </Bean>
-  <Bean name="PWM1" type="PWM">
-    <Enabled v="Y" />
-    <Properties>
-      <Component_name v="PWM1" />
-      <PWM_or_PPG_device v="TPM20" />
-      <Duty_compare v="" />
-      <Output_pin v="PTA1_KBI1P1_TPM2CH0_ADP1_ACMP1MINUS" />
-      <Counter v="TPM2" />
-      <boolgroup name="Interrupt service/event" v="Disabled" />
-      <Period v="20 ms" />
-      <Starting_pulse_width v="0 ms" />
-      <Aligned v="Edge" />
-      <Initial_polarity v="low" />
-      <Same_period_in_modes v="no" />
-      <Component_uses_entire_timer v="no" />
-      <group name="Initialization">
-        <Enabled_in_init__code v="yes" />
-        <Events_enabled_in_init_ v="yes" />
-      </group>
-      <group name="CPU clock/speed selection">
-        <High_speed_mode v="This component enabled" />
-        <Low_speed_mode v="This component disabled" />
-        <Slow_speed_mode v="This component disabled" />
-      </group>
-    </Properties>
-    <Methods>
-      <Enable v="don&amp;apos;t generate code" />
-      <Disable v="don&amp;apos;t generate code" />
-      <EnableEvent v="don&amp;apos;t generate code" />
-      <DisableEvent v="don&amp;apos;t generate code" />
-      <SetRatio8 v="don&amp;apos;t generate code" />
-      <SetRatio16 v="generate code" />
-      <SetDutyTicks16 v="don&amp;apos;t generate code" />
-      <SetDutyTicks32 v="don&amp;apos;t generate code" />
-      <SetDutyUS v="generate code" />
-      <SetDutyMS v="generate code" />
-      <SetDutySec v="don&amp;apos;t generate code" />
-      <SetDutyReal v="don&amp;apos;t generate code" />
-      <SetDutyMode v="don&amp;apos;t generate code" />
-      <SetValue v="don&amp;apos;t generate code" />
-      <ClrValue v="don&amp;apos;t generate code" />
-    </Methods>
-    <Events>
-      <Event_module_name v="Events" />
-      <event name="BeforeNewSpeed" v="don&amp;apos;t generate code" />
-      <event name="AfterNewSpeed" v="don&amp;apos;t generate code" />
-      <event name="OnEnd" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
 </PE_PROJECT_SETTINGS_DOCUMENTATION>
