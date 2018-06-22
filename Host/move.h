@@ -48,6 +48,18 @@ void move(robot_type *robot);
 void filter(unsigned short ax, unsigned short ay, unsigned short az, unsigned short gx, unsigned short gy, unsigned short gz, float dt, 
     double *angleX, double *angleY, double *angleZ);
 
+typedef struct {
+	unsigned char dx;
+	unsigned char dy;
+}mouse_sensor;
 
+typedef struct {
+	unsigned short ax;
+	unsigned short ay;
+	unsigned short az;
+	unsigned short gx;
+	unsigned short gy;
+	unsigned short gz;
+}imu_sensor;
 
 #endif /* MOVE */
