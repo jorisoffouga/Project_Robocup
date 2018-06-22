@@ -37,14 +37,13 @@ int main(int argc, char *agrv[])
     for (;;)
     {
 
-        read_serial(fd, buffer, '\r', 9,1000);
+        read_serial(fd, buffer, '\r', 13,100);
         printf("%s ", buffer);
         //scanf("%10s", message);
-        //write_serial(fd,message);
         //printf("%s",message);
 
         fflush(stdout);
-        //usleep(100);
+        usleep(100000);
     }
 
     close_serial(fd);

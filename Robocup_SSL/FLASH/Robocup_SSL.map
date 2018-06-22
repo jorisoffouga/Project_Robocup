@@ -12,6 +12,8 @@ Linker      : SmartLinker V-5.0.53 Build 17146, May 27 2017
 *********************************************************************************************
 FILE SECTION
 ---------------------------------------------------------------------------------------------
+Adns3080_c.obj                          Model: SMALL,         Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC08 V-5.0.46 Build 17146, May 27 2017
+FP3_c.obj                               Model: SMALL,         Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC08 V-5.0.46 Build 17146, May 27 2017
 MPU6050_c.obj                           Model: SMALL,         Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC08 V-5.0.46 Build 17146, May 27 2017
 Spi_c.obj                               Model: SMALL,         Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC08 V-5.0.46 Build 17146, May 27 2017
 Uart_c.obj                              Model: SMALL,         Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC08 V-5.0.46 Build 17146, May 27 2017
@@ -30,16 +32,16 @@ Entry point: 0xC004 (_EntryPoint)
 _startupData is allocated at 0xC09A and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0xA0     50
-  _Copy    *toCopyDownBeg 0xCF10
+  _Range   pZeroOut       0xA0     95
+  _Copy    *toCopyDownBeg 0xD10A
 } _startupData;
 
 *********************************************************************************************
 SECTION-ALLOCATION SECTION
 Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
-.text                           3679     R     0xC0A8     0xCF06   ROM
-.rodata1                           9     R     0xCF07     0xCF0F   ROM
+.text                           4185     R     0xC0A8     0xD100   ROM
+.rodata1                           9     R     0xD101     0xD109   ROM
 .abs_section_ffbd                  1     R     0xFFBD     0xFFBD   .absSeg0
 .abs_section_ffbf                  1     R     0xFFBF     0xFFBF   .absSeg1
 .abs_section_0                     1   N/I        0x0        0x0   .absSeg2
@@ -179,13 +181,13 @@ Section Name                    Size  Type     From       To       Segment
 .bss                              13   R/W       0xA0       0xAC   RAM
 .startData                        14     R     0xC09A     0xC0A7   ROM
 .init                            154     R     0xC000     0xC099   ROM
-.common                           37   R/W       0xAD       0xD1   RAM
-.stack                           128   R/W       0xD2      0x151   RAM
-.copy                              2     R     0xCF10     0xCF11   ROM
+.common                           82   R/W       0xAD       0xFE   RAM
+.stack                           128   R/W       0xFF      0x17E   RAM
+.copy                              2     R     0xD10A     0xD10B   ROM
 
 Summary of section sizes per section type:
-READ_ONLY (R):         F54 (dec:     3924)
-READ_WRITE (R/W):       B2 (dec:      178)
+READ_ONLY (R):        114E (dec:     4430)
+READ_WRITE (R/W):       DF (dec:      223)
 NO_INIT (N/I):          A0 (dec:      160)
 
 *********************************************************************************************
@@ -197,55 +199,71 @@ VECTOR-ALLOCATION SECTION
 OBJECT-ALLOCATION SECTION
      Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
 ---------------------------------------------------------------------------------------------
+MODULE:                 -- Adns3080_c.obj --
+- PROCEDURES:
+     adns3080_init                             C0A8      1B      27       2   .text       
+     adns3080_get_device                       C0C3      15      21       2   .text       
+     update_sensor                             C0D8      4E      78       2   .text       
+     adns3080_write                            C126      1C      28       1   .text       
+     adns3080_read                             C142      36      54       4   .text       
+- VARIABLES:
+MODULE:                 -- FP3_c.obj --
+- PROCEDURES:
+     delai                                     C178      1D      29       1   .text       
+- VARIABLES:
 MODULE:                 -- MPU6050_c.obj --
 - PROCEDURES:
-     mpu6050_get_device                        C0A8      29      41       1   .text       
-     mpu6050_init                              C0D1      29      41       1   .text       
-     mpu6050_get_acceleration                  C0FA      BB     187       1   .text       
-     mpu6050_get_gyro                          C1B5      BB     187       1   .text       
-     mpu6050_get_temp                          C270      58      88       1   .text       
-     MPU6050_read                              C2C8      40      64      15   .text       
-     MPU6050_write                             C308      22      34       3   .text       
-     mpu6050_update                            C32A      14      20       1   .text       
-     forme_value                               C33E      16      22       7   .text       
+     mpu6050_get_device                        C195      29      41       1   .text       
+     mpu6050_init                              C1BE      29      41       1   .text       
+     mpu6050_get_acceleration                  C1E7      BB     187       1   .text       
+     mpu6050_get_gyro                          C2A2      BB     187       1   .text       
+     mpu6050_get_temp                          C35D      58      88       1   .text       
+     MPU6050_read                              C3B5      40      64      15   .text       
+     MPU6050_write                             C3F5      22      34       3   .text       
+     mpu6050_update                            C417      14      20       1   .text       
+     forme_value                               C42B      16      22       7   .text       
 - VARIABLES:
      dummy                                       A0       1       1       6   .bss        
      value                                       AD       2       2       3   .common     
 MODULE:                 -- Spi_c.obj --
 - PROCEDURES:
-     spi_init                                  C354      69     105       1   .text       
+     spi_init                                  C441      69     105       1   .text       
+     init_spi_buffer                           C4AA      95     149       2   .text       
+     spi_transfer                              C53F      99     153       4   .text       
 - VARIABLES:
 MODULE:                 -- Uart_c.obj --
 - PROCEDURES:
-     isr_uart_rx                               C3BD      32      50       1   .text       
-     uart_init                                 C3EF      7F     127       1   .text       
-     init_buffer_uart                          C46E      80     128       1   .text       
-     uart_send                                 C4EE      51      81       1   .text       
+     isr_uart_rx                               C5D8      43      67       1   .text       
+     uart_init                                 C61B      7F     127       1   .text       
+     uart_send                                 C69A      30      48      11   .text       
 - VARIABLES:
-     uart_isr                                    AF       D      13      10   .common     
+     uart_isr                                    AF       D      13       8   .common     
+     i                                           BC       1       1       4   .common     
 MODULE:                 -- main_c.obj --
 - PROCEDURES:
-     ISR_IMU                                   C53F       B      11       1   .text       
-     main                                      C54A      56      86       1   .text       
+     isr_update                                C6CA      77     119       1   .text       
+     main                                      C741      59      89       1   .text       
 - VARIABLES:
-     STRING.MPU6050..1                         CF07       9       9       1   .rodata1    
-     mpu6050                                     BC      13      19       2   .common     
+     STRING.MPU6050..1                         D101       9       9       1   .rodata1    
+     mpu6050                                     BD      13      19       8   .common     
+     sensor_1                                    D0      16      22       5   .common     
+     sensor_2                                    E6      16      22       5   .common     
 MODULE:                 -- start08_c.obj --
 - PROCEDURES:
-     loadByte                                  C5A0       E      14       5   .text       
-     Init                                      C5AE      71     113       1   .text       
-     _Startup                                  C61F       9       9       1   .text       
+     loadByte                                  C79A       E      14       5   .text       
+     Init                                      C7A8      71     113       1   .text       
+     _Startup                                  C819       9       9       1   .text       
 - VARIABLES:
      _startupData                              C09A       6       6       4   .startData  
 - LABELS:
-     __SEG_END_SSTACK                           152       0       0       1               
+     __SEG_END_SSTACK                           17F       0       0       1               
 MODULE:                 -- CI2C1_c.obj --
 - PROCEDURES:
-     MainComm                                  C628     147     327       7   .text       
-     CI2C1_SendBlock                           C76F      50      80       2   .text       
-     CI2C1_RecvBlock                           C7BF      51      81       1   .text       
-     CI2C1_SelectSlave                         C810       C      12       3   .text       
-     CI2C1_Init                                C81C      15      21       1   .text       
+     MainComm                                  C822     147     327       7   .text       
+     CI2C1_SendBlock                           C969      50      80       2   .text       
+     CI2C1_RecvBlock                           C9B9      51      81       1   .text       
+     CI2C1_SelectSlave                         CA0A       C      12       3   .text       
+     CI2C1_Init                                CA16      15      21       1   .text       
 - VARIABLES:
      CI2C1_SlaveAddr                             A1       1       1       4   .bss        
      InpLenM                                     A2       2       2      10   .bss        
@@ -254,7 +272,7 @@ MODULE:                 -- CI2C1_c.obj --
      OutPtrM                                     A8       2       2       3   .bss        
      PtrSndRcv                                   AA       2       2       5   .bss        
      CI2C1_SerFlag                               AC       1       1       7   .bss        
-     CI2C1_SndRcvTemp                            CF       2       2       3   .common     
+     CI2C1_SndRcvTemp                            FC       2       2       3   .common     
 MODULE:                 -- Cpu_c.obj --
 - PROCEDURES:
      Cpu_Interrupt                             C000       4       4      29   .init       
@@ -263,7 +281,7 @@ MODULE:                 -- Cpu_c.obj --
 - VARIABLES:
      NVPROT_INIT                               FFBD       1       1       0   .abs_section_ffbd
      NVOPT_INIT                                FFBF       1       1       0   .abs_section_ffbf
-     CCR_lock                                    D1       1       1       1   .common     
+     CCR_lock                                    FE       1       1       1   .common     
 MODULE:                 -- IO_Map_c.obj --
 - PROCEDURES:
 - VARIABLES:
@@ -271,7 +289,7 @@ MODULE:                 -- IO_Map_c.obj --
      _PTADD                                       1       1       1       3   .abs_section_1
      _PTBD                                        2       1       1       0   .abs_section_2
      _PTBDD                                       3       1       1       0   .abs_section_3
-     _PTCD                                        4       1       1       2   .abs_section_4
+     _PTCD                                        4       1       1       6   .abs_section_4
      _PTCDD                                       5       1       1       2   .abs_section_5
      _PTDD                                        6       1       1       0   .abs_section_6
      _PTDDD                                       7       1       1       2   .abs_section_7
@@ -297,8 +315,8 @@ MODULE:                 -- IO_Map_c.obj --
      _SPIC1                                      28       1       1      12   .abs_section_28
      _SPIC2                                      29       1       1       2   .abs_section_29
      _SPIBR                                      2A       1       1       1   .abs_section_2a
-     _SPIS                                       2B       1       1       0   .abs_section_2b
-     _SPID                                       2D       1       1       0   .abs_section_2d
+     _SPIS                                       2B       1       1       2   .abs_section_2b
+     _SPID                                       2D       1       1       2   .abs_section_2d
      _IICA                                       30       1       1       0   .abs_section_30
      _IICF                                       31       1       1       1   .abs_section_31
      _IICC1                                      32       1       1      23   .abs_section_32
@@ -406,54 +424,56 @@ MODULE:                 -- Vectors_c.obj --
      _vect                                     FFC0      40      64       0   .abs_section_ffc0
 MODULE:                 -- rtshc08.o (ansifs.lib) --
 - PROCEDURES:
-     _PUSH_ARGS_L                              C831      20      32       2   .text       
-     _ENTER_UNARY_L                            C851      29      41       3   .text       
-     _ENTER_BINARY_L_RC                        C87A      19      25       3   .text       
-     _ENTER_BINARY_L_LC                        C893      1A      26       1   .text       
-     _IDIVMOD                                  C8AD      69     105       1   .text       
-     _SPLITSIGN                                C916      1C      28       1   .text       
-     _NEG_L_HX                                 C932      13      19       2   .text       
-     _IDIVS_STAR08                             C945      1B      27       6   .text       
-     _ICMP                                     C960      16      22       2   .text       
-     _POP32                                    C976      1A      26       1   .text       
-     _SEXT16_32                                C990       D      13       1   .text       
-     F_CLRK                                    C99D       6       6       3   .text       
-     F_CLRK_Unary                              C9A3       6       6       1   .text       
-     F_NANK                                    C9A9       6       6       3   .text       
-     F_INFK                                    C9AF       6       6       3   .text       
-     F_TLK                                     C9B5      1E      30       2   .text       
-     F_XGKL                                    C9D3      48      72       1   .text       
-     _UNPACK_k_to_K                            CA1B      58      88       3   .text       
-     _UNPACK_k_to_K_Unary                      CA73      58      88       1   .text       
-     _UNPACK_j_to_L                            CACB      58      88       3   .text       
-     _PACK_K_to_k                              CB23      63      99       3   .text       
-     _PACK_K_to_k_Unary                        CB86      4F      79       2   .text       
-     F_NORMK                                   CBD5      43      67       3   .text       
-     _FADD_K_is_K_plus_L                       CC18      AD     173       1   .text       
-     _FMUL_K_is_K_times_L                      CCC5      88     136       1   .text       
-     _FDIV_K_is_L_div_K                        CD4D      B5     181       1   .text       
-     _F_LONGK                                  CE02      5A      90       1   .text       
-     _F_FLOATK                                 CE5C      2E      46       3   .text       
-     _FADD_Common                              CE8A       F      15       1   .text       
-     _FMUL_Common                              CE99       F      15       1   .text       
-     _FDIV_Common                              CEA8       F      15       2   .text       
-     _FADD_RC                                  CEB7       7       7       2   .text       
-     _FMUL_RC                                  CEBE       7       7       1   .text       
-     _FDIV_RC                                  CEC5       7       7       1   .text       
-     _FDIV_LC                                  CECC       7       7       1   .text       
-     _FSTRUNC                                  CED3       B      11       1   .text       
-     _FSFLOAT                                  CEDE      1E      30       1   .text       
-     _FUFLOAT                                  CEFC       B      11       1   .text       
+     _PUSH_ARGS_L                              CA2B      20      32       2   .text       
+     _ENTER_UNARY_L                            CA4B      29      41       3   .text       
+     _ENTER_BINARY_L_RC                        CA74      19      25       3   .text       
+     _ENTER_BINARY_L_LC                        CA8D      1A      26       1   .text       
+     _IDIVMOD                                  CAA7      69     105       1   .text       
+     _SPLITSIGN                                CB10      1C      28       1   .text       
+     _NEG_L_HX                                 CB2C      13      19       2   .text       
+     _IDIVS_STAR08                             CB3F      1B      27       6   .text       
+     _ICMP                                     CB5A      16      22       3   .text       
+     _POP32                                    CB70      1A      26       1   .text       
+     _SEXT16_32                                CB8A       D      13       1   .text       
+     F_CLRK                                    CB97       6       6       3   .text       
+     F_CLRK_Unary                              CB9D       6       6       1   .text       
+     F_NANK                                    CBA3       6       6       3   .text       
+     F_INFK                                    CBA9       6       6       3   .text       
+     F_TLK                                     CBAF      1E      30       2   .text       
+     F_XGKL                                    CBCD      48      72       1   .text       
+     _UNPACK_k_to_K                            CC15      58      88       3   .text       
+     _UNPACK_k_to_K_Unary                      CC6D      58      88       1   .text       
+     _UNPACK_j_to_L                            CCC5      58      88       3   .text       
+     _PACK_K_to_k                              CD1D      63      99       3   .text       
+     _PACK_K_to_k_Unary                        CD80      4F      79       2   .text       
+     F_NORMK                                   CDCF      43      67       3   .text       
+     _FADD_K_is_K_plus_L                       CE12      AD     173       1   .text       
+     _FMUL_K_is_K_times_L                      CEBF      88     136       1   .text       
+     _FDIV_K_is_L_div_K                        CF47      B5     181       1   .text       
+     _F_LONGK                                  CFFC      5A      90       1   .text       
+     _F_FLOATK                                 D056      2E      46       3   .text       
+     _FADD_Common                              D084       F      15       1   .text       
+     _FMUL_Common                              D093       F      15       1   .text       
+     _FDIV_Common                              D0A2       F      15       2   .text       
+     _FADD_RC                                  D0B1       7       7       2   .text       
+     _FMUL_RC                                  D0B8       7       7       1   .text       
+     _FDIV_RC                                  D0BF       7       7       1   .text       
+     _FDIV_LC                                  D0C6       7       7       1   .text       
+     _FSTRUNC                                  D0CD       B      11       1   .text       
+     _FSFLOAT                                  D0D8      1E      30       1   .text       
+     _FUFLOAT                                  D0F6       B      11       1   .text       
 - VARIABLES:
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
+  Adns3080_c.obj                               0    208      0
+  FP3_c.obj                                    0     29      0
   MPU6050_c.obj                                3    684      0
-  Spi_c.obj                                    0    105      0
-  Uart_c.obj                                  13    386      0
-  main_c.obj                                  19     97      9
+  Spi_c.obj                                    0    407      0
+  Uart_c.obj                                  14    242      0
+  main_c.obj                                  63    208      9
   start08_c.obj                                0    136      0
   CI2C1_c.obj                                 14    521      0
   Cpu_c.obj                                    1    154      2
@@ -466,17 +486,18 @@ MODULE STATISTIC
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  mpu6050_get_device mpu6050_init mpu6050_get_acceleration mpu6050_get_gyro 
-  mpu6050_get_temp MPU6050_read MPU6050_write mpu6050_update forme_value 
-  spi_init isr_uart_rx uart_init init_buffer_uart uart_send ISR_IMU main 
-  loadByte Init _Startup MainComm CI2C1_SendBlock CI2C1_RecvBlock 
-  CI2C1_SelectSlave CI2C1_Init _PUSH_ARGS_L _ENTER_UNARY_L _ENTER_BINARY_L_RC 
-  _ENTER_BINARY_L_LC _IDIVMOD _SPLITSIGN _NEG_L_HX _IDIVS_STAR08 _ICMP _POP32 
-  _SEXT16_32 F_CLRK F_CLRK_Unary F_NANK F_INFK F_TLK F_XGKL _UNPACK_k_to_K 
-  _UNPACK_k_to_K_Unary _UNPACK_j_to_L _PACK_K_to_k _PACK_K_to_k_Unary F_NORMK 
-  _FADD_K_is_K_plus_L _FMUL_K_is_K_times_L _FDIV_K_is_L_div_K _F_LONGK 
-  _F_FLOATK _FADD_Common _FMUL_Common _FDIV_Common _FADD_RC _FMUL_RC _FDIV_RC 
-  _FDIV_LC _FSTRUNC _FSFLOAT _FUFLOAT 
+  adns3080_init adns3080_get_device update_sensor adns3080_write adns3080_read 
+  delai mpu6050_get_device mpu6050_init mpu6050_get_acceleration 
+  mpu6050_get_gyro mpu6050_get_temp MPU6050_read MPU6050_write mpu6050_update 
+  forme_value spi_init init_spi_buffer spi_transfer isr_uart_rx uart_init 
+  uart_send isr_update main loadByte Init _Startup MainComm CI2C1_SendBlock 
+  CI2C1_RecvBlock CI2C1_SelectSlave CI2C1_Init _PUSH_ARGS_L _ENTER_UNARY_L 
+  _ENTER_BINARY_L_RC _ENTER_BINARY_L_LC _IDIVMOD _SPLITSIGN _NEG_L_HX 
+  _IDIVS_STAR08 _ICMP _POP32 _SEXT16_32 F_CLRK F_CLRK_Unary F_NANK F_INFK F_TLK 
+  F_XGKL _UNPACK_k_to_K _UNPACK_k_to_K_Unary _UNPACK_j_to_L _PACK_K_to_k 
+  _PACK_K_to_k_Unary F_NORMK _FADD_K_is_K_plus_L _FMUL_K_is_K_times_L 
+  _FDIV_K_is_L_div_K _F_LONGK _F_FLOATK _FADD_Common _FMUL_Common _FDIV_Common 
+  _FADD_RC _FMUL_RC _FDIV_RC _FDIV_LC _FSTRUNC _FSFLOAT _FUFLOAT 
 SECTION: ".bss"
   dummy CI2C1_SlaveAddr InpLenM InpPtrM OutLenM OutPtrM PtrSndRcv 
   CI2C1_SerFlag 
@@ -485,7 +506,7 @@ SECTION: ".init"
 SECTION: ".rodata1"
   STRING.MPU6050..1 
 SECTION: ".common"
-  value uart_isr mpu6050 CI2C1_SndRcvTemp CCR_lock 
+  value uart_isr i mpu6050 sensor_1 sensor_2 CI2C1_SndRcvTemp CCR_lock 
 SECTION: ".abs_section_ffbd"
   NVPROT_INIT 
 SECTION: ".abs_section_ffbf"
@@ -767,7 +788,7 @@ OBJECT LIST SORTED BY ADDRESS
      _PTADD                                       1       1       1       3   .abs_section_1
      _PTBD                                        2       1       1       0   .abs_section_2
      _PTBDD                                       3       1       1       0   .abs_section_3
-     _PTCD                                        4       1       1       2   .abs_section_4
+     _PTCD                                        4       1       1       6   .abs_section_4
      _PTCDD                                       5       1       1       2   .abs_section_5
      _PTDD                                        6       1       1       0   .abs_section_6
      _PTDDD                                       7       1       1       2   .abs_section_7
@@ -796,8 +817,8 @@ OBJECT LIST SORTED BY ADDRESS
      _SPIC1                                      28       1       1      12   .abs_section_28
      _SPIC2                                      29       1       1       2   .abs_section_29
      _SPIBR                                      2A       1       1       1   .abs_section_2a
-     _SPIS                                       2B       1       1       0   .abs_section_2b
-     _SPID                                       2D       1       1       0   .abs_section_2d
+     _SPIS                                       2B       1       1       2   .abs_section_2b
+     _SPID                                       2D       1       1       2   .abs_section_2d
      _IICA                                       30       1       1       0   .abs_section_30
      _IICF                                       31       1       1       1   .abs_section_31
      _IICC1                                      32       1       1      23   .abs_section_32
@@ -853,10 +874,13 @@ OBJECT LIST SORTED BY ADDRESS
      PtrSndRcv                                   AA       2       2       5   .bss        
      CI2C1_SerFlag                               AC       1       1       7   .bss        
      value                                       AD       2       2       3   .common     
-     uart_isr                                    AF       D      13      10   .common     
-     mpu6050                                     BC      13      19       2   .common     
-     CI2C1_SndRcvTemp                            CF       2       2       3   .common     
-     CCR_lock                                    D1       1       1       1   .common     
+     uart_isr                                    AF       D      13       8   .common     
+     i                                           BC       1       1       4   .common     
+     mpu6050                                     BD      13      19       8   .common     
+     sensor_1                                    D0      16      22       5   .common     
+     sensor_2                                    E6      16      22       5   .common     
+     CI2C1_SndRcvTemp                            FC       2       2       3   .common     
+     CCR_lock                                    FE       1       1       1   .common     
      _SRS                                      1800       1       1       0   .abs_section_1800
      _SBDFR                                    1801       1       1       0   .abs_section_1801
      _SOPT1                                    1802       1       1       1   .abs_section_1802
@@ -912,69 +936,76 @@ OBJECT LIST SORTED BY ADDRESS
      Cpu_Interrupt                             C000       4       4      29   .init       
      _EntryPoint                               C004      4D      77       1   .init       
      PE_low_level_init                         C051      49      73       1   .init       
-     mpu6050_get_device                        C0A8      29      41       1   .text       
-     mpu6050_init                              C0D1      29      41       1   .text       
-     mpu6050_get_acceleration                  C0FA      BB     187       1   .text       
-     mpu6050_get_gyro                          C1B5      BB     187       1   .text       
-     mpu6050_get_temp                          C270      58      88       1   .text       
-     MPU6050_read                              C2C8      40      64      15   .text       
-     MPU6050_write                             C308      22      34       3   .text       
-     mpu6050_update                            C32A      14      20       1   .text       
-     forme_value                               C33E      16      22       7   .text       
-     spi_init                                  C354      69     105       1   .text       
-     isr_uart_rx                               C3BD      32      50       1   .text       
-     uart_init                                 C3EF      7F     127       1   .text       
-     init_buffer_uart                          C46E      80     128       1   .text       
-     uart_send                                 C4EE      51      81       1   .text       
-     ISR_IMU                                   C53F       B      11       1   .text       
-     main                                      C54A      56      86       1   .text       
-     loadByte                                  C5A0       E      14       5   .text       
-     Init                                      C5AE      71     113       1   .text       
-     _Startup                                  C61F       9       9       1   .text       
-     MainComm                                  C628     147     327       7   .text       
-     CI2C1_SendBlock                           C76F      50      80       2   .text       
-     CI2C1_RecvBlock                           C7BF      51      81       1   .text       
-     CI2C1_SelectSlave                         C810       C      12       3   .text       
-     CI2C1_Init                                C81C      15      21       1   .text       
-     _PUSH_ARGS_L                              C831      20      32       2   .text       
-     _ENTER_UNARY_L                            C851      29      41       3   .text       
-     _ENTER_BINARY_L_RC                        C87A      19      25       3   .text       
-     _ENTER_BINARY_L_LC                        C893      1A      26       1   .text       
-     _IDIVMOD                                  C8AD      69     105       1   .text       
-     _SPLITSIGN                                C916      1C      28       1   .text       
-     _NEG_L_HX                                 C932      13      19       2   .text       
-     _IDIVS_STAR08                             C945      1B      27       6   .text       
-     _ICMP                                     C960      16      22       2   .text       
-     _POP32                                    C976      1A      26       1   .text       
-     _SEXT16_32                                C990       D      13       1   .text       
-     F_CLRK                                    C99D       6       6       3   .text       
-     F_CLRK_Unary                              C9A3       6       6       1   .text       
-     F_NANK                                    C9A9       6       6       3   .text       
-     F_INFK                                    C9AF       6       6       3   .text       
-     F_TLK                                     C9B5      1E      30       2   .text       
-     F_XGKL                                    C9D3      48      72       1   .text       
-     _UNPACK_k_to_K                            CA1B      58      88       3   .text       
-     _UNPACK_k_to_K_Unary                      CA73      58      88       1   .text       
-     _UNPACK_j_to_L                            CACB      58      88       3   .text       
-     _PACK_K_to_k                              CB23      63      99       3   .text       
-     _PACK_K_to_k_Unary                        CB86      4F      79       2   .text       
-     F_NORMK                                   CBD5      43      67       3   .text       
-     _FADD_K_is_K_plus_L                       CC18      AD     173       1   .text       
-     _FMUL_K_is_K_times_L                      CCC5      88     136       1   .text       
-     _FDIV_K_is_L_div_K                        CD4D      B5     181       1   .text       
-     _F_LONGK                                  CE02      5A      90       1   .text       
-     _F_FLOATK                                 CE5C      2E      46       3   .text       
-     _FADD_Common                              CE8A       F      15       1   .text       
-     _FMUL_Common                              CE99       F      15       1   .text       
-     _FDIV_Common                              CEA8       F      15       2   .text       
-     _FADD_RC                                  CEB7       7       7       2   .text       
-     _FMUL_RC                                  CEBE       7       7       1   .text       
-     _FDIV_RC                                  CEC5       7       7       1   .text       
-     _FDIV_LC                                  CECC       7       7       1   .text       
-     _FSTRUNC                                  CED3       B      11       1   .text       
-     _FSFLOAT                                  CEDE      1E      30       1   .text       
-     _FUFLOAT                                  CEFC       B      11       1   .text       
-     STRING.MPU6050..1                         CF07       9       9       1   .rodata1    
+     adns3080_init                             C0A8      1B      27       2   .text       
+     adns3080_get_device                       C0C3      15      21       2   .text       
+     update_sensor                             C0D8      4E      78       2   .text       
+     adns3080_write                            C126      1C      28       1   .text       
+     adns3080_read                             C142      36      54       4   .text       
+     delai                                     C178      1D      29       1   .text       
+     mpu6050_get_device                        C195      29      41       1   .text       
+     mpu6050_init                              C1BE      29      41       1   .text       
+     mpu6050_get_acceleration                  C1E7      BB     187       1   .text       
+     mpu6050_get_gyro                          C2A2      BB     187       1   .text       
+     mpu6050_get_temp                          C35D      58      88       1   .text       
+     MPU6050_read                              C3B5      40      64      15   .text       
+     MPU6050_write                             C3F5      22      34       3   .text       
+     mpu6050_update                            C417      14      20       1   .text       
+     forme_value                               C42B      16      22       7   .text       
+     spi_init                                  C441      69     105       1   .text       
+     init_spi_buffer                           C4AA      95     149       2   .text       
+     spi_transfer                              C53F      99     153       4   .text       
+     isr_uart_rx                               C5D8      43      67       1   .text       
+     uart_init                                 C61B      7F     127       1   .text       
+     uart_send                                 C69A      30      48      11   .text       
+     isr_update                                C6CA      77     119       1   .text       
+     main                                      C741      59      89       1   .text       
+     loadByte                                  C79A       E      14       5   .text       
+     Init                                      C7A8      71     113       1   .text       
+     _Startup                                  C819       9       9       1   .text       
+     MainComm                                  C822     147     327       7   .text       
+     CI2C1_SendBlock                           C969      50      80       2   .text       
+     CI2C1_RecvBlock                           C9B9      51      81       1   .text       
+     CI2C1_SelectSlave                         CA0A       C      12       3   .text       
+     CI2C1_Init                                CA16      15      21       1   .text       
+     _PUSH_ARGS_L                              CA2B      20      32       2   .text       
+     _ENTER_UNARY_L                            CA4B      29      41       3   .text       
+     _ENTER_BINARY_L_RC                        CA74      19      25       3   .text       
+     _ENTER_BINARY_L_LC                        CA8D      1A      26       1   .text       
+     _IDIVMOD                                  CAA7      69     105       1   .text       
+     _SPLITSIGN                                CB10      1C      28       1   .text       
+     _NEG_L_HX                                 CB2C      13      19       2   .text       
+     _IDIVS_STAR08                             CB3F      1B      27       6   .text       
+     _ICMP                                     CB5A      16      22       3   .text       
+     _POP32                                    CB70      1A      26       1   .text       
+     _SEXT16_32                                CB8A       D      13       1   .text       
+     F_CLRK                                    CB97       6       6       3   .text       
+     F_CLRK_Unary                              CB9D       6       6       1   .text       
+     F_NANK                                    CBA3       6       6       3   .text       
+     F_INFK                                    CBA9       6       6       3   .text       
+     F_TLK                                     CBAF      1E      30       2   .text       
+     F_XGKL                                    CBCD      48      72       1   .text       
+     _UNPACK_k_to_K                            CC15      58      88       3   .text       
+     _UNPACK_k_to_K_Unary                      CC6D      58      88       1   .text       
+     _UNPACK_j_to_L                            CCC5      58      88       3   .text       
+     _PACK_K_to_k                              CD1D      63      99       3   .text       
+     _PACK_K_to_k_Unary                        CD80      4F      79       2   .text       
+     F_NORMK                                   CDCF      43      67       3   .text       
+     _FADD_K_is_K_plus_L                       CE12      AD     173       1   .text       
+     _FMUL_K_is_K_times_L                      CEBF      88     136       1   .text       
+     _FDIV_K_is_L_div_K                        CF47      B5     181       1   .text       
+     _F_LONGK                                  CFFC      5A      90       1   .text       
+     _F_FLOATK                                 D056      2E      46       3   .text       
+     _FADD_Common                              D084       F      15       1   .text       
+     _FMUL_Common                              D093       F      15       1   .text       
+     _FDIV_Common                              D0A2       F      15       2   .text       
+     _FADD_RC                                  D0B1       7       7       2   .text       
+     _FMUL_RC                                  D0B8       7       7       1   .text       
+     _FDIV_RC                                  D0BF       7       7       1   .text       
+     _FDIV_LC                                  D0C6       7       7       1   .text       
+     _FSTRUNC                                  D0CD       B      11       1   .text       
+     _FSFLOAT                                  D0D8      1E      30       1   .text       
+     _FUFLOAT                                  D0F6       B      11       1   .text       
+     STRING.MPU6050..1                         D101       9       9       1   .rodata1    
      NVPROT_INIT                               FFBD       1       1       0   .abs_section_ffbd
      NVOPT_INIT                                FFBF       1       1       0   .abs_section_ffbf
      _vect                                     FFC0      40      64       0   .abs_section_ffc0
@@ -983,10 +1014,12 @@ OBJECT LIST SORTED BY ADDRESS
 UNUSED-OBJECTS SECTION
 ---------------------------------------------------------------------------------------------
 NOT USED PROCEDURES
+Adns3080_c.obj:
+  update_burst 
+FP3_c.obj:
+  filter 
 MPU6050_c.obj:
   mpu6050_get_config 
-Spi_c.obj:
-  init_spi_buffer spi_transfer 
 CI2C1_c.obj:
   CI2C1_SendChar 
 rtshc08.o (ansifs.lib):
@@ -1017,6 +1050,8 @@ rtshc08.o (ansifs.lib):
   _DCMP_RC _DINC _DDEC _DNEG _DABS _DSFLOAT _DUFLOAT _DSTRUNC _DUTRUNC _DSHORT 
   _DLONG 
 NOT USED VARIABLES
+FP3_c.obj:
+  angle_gx.1 angle_gy.2 angle_gz.3 
 CI2C1_c.obj:
   ChrTemp 
 Cpu_c.obj:
@@ -1027,7 +1062,7 @@ rtshc08.o (ansifs.lib):
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xCF10 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xD10A ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -1039,6 +1074,11 @@ _EntryPoint               USES _SOPT1 _SOPT2 _SPMSC1 _SPMSC2 _SPMSC3 _ICSTRM
 PE_low_level_init         USES _SCGC1 _SCGC2 _PTADD _PTASE _PTBSE _PTCSE 
                                 _PTDSE _PTADS _PTBDS _PTCDS _PTDDS _PTDDD _PTEDD 
                                 CI2C1_Init CCR_lock 
+adns3080_init             USES adns3080_write 
+adns3080_get_device       USES adns3080_read 
+update_sensor             USES adns3080_read 
+adns3080_write            USES init_spi_buffer spi_transfer 
+adns3080_read             USES init_spi_buffer spi_transfer 
 mpu6050_get_device        USES MPU6050_read 
 mpu6050_init              USES MPU6050_write 
 mpu6050_get_acceleration  USES MPU6050_read forme_value _IDIVS_STAR08 
@@ -1053,15 +1093,17 @@ mpu6050_update            USES mpu6050_get_acceleration mpu6050_get_gyro
                                 mpu6050_get_temp 
 forme_value               USES value 
 spi_init                  USES _SPIBR _SPIC2 _SPIC1 _PTCDD _PTADD _PTBPE _PTCD 
-isr_uart_rx               USES _SCI1S1 _SCI1D uart_isr 
+init_spi_buffer           USES _ICMP 
+spi_transfer              USES spi_transfer _SPIS _SPID delai _ICMP 
+isr_uart_rx               USES _SCI1S1 _SCI1D uart_isr i 
 uart_init                 USES _FUFLOAT _FMUL_RC _FDIV_LC _FADD_RC _FSTRUNC 
                                 _SCI1BD _SCI1C1 _SCI1C2 
-init_buffer_uart          USES _ICMP 
-uart_send                 USES _SCI1S1 _SCI1D _ICMP 
-ISR_IMU                   USES mpu6050 mpu6050_update _TPM1C0SC 
+uart_send                 USES _SCI1S1 _SCI1D 
+isr_update                USES _PTCD sensor_1 update_sensor uart_send sensor_2 
+                                mpu6050 mpu6050_update _TPM1C0SC 
 main                      USES STRING.MPU6050..1 PE_low_level_init uart_init 
                                 spi_init mpu6050_init mpu6050 mpu6050_get_device 
-                                init_buffer_uart uart_send 
+                                sensor_1 adns3080_init sensor_2 adns3080_get_device 
 Init                      USES _startupData loadByte 
 _Startup                  USES __SEG_END_SSTACK Init main 
 MainComm                  USES PtrSndRcv MainComm _IICS _IICC1 OutLenM InpLenM 
@@ -1097,7 +1139,8 @@ _FSTRUNC                  USES _ENTER_UNARY_L _UNPACK_k_to_K_Unary _F_LONGK
 _FSFLOAT                  USES _ENTER_UNARY_L _F_FLOATK _NEG_L_HX 
                                 _PACK_K_to_k_Unary 
 _FUFLOAT                  USES _ENTER_UNARY_L _F_FLOATK _PACK_K_to_k_Unary 
-_vect                     USES Cpu_Interrupt isr_uart_rx ISR_IMU _EntryPoint 
+_vect                     USES Cpu_Interrupt isr_uart_rx isr_update 
+                                _EntryPoint 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -1230,14 +1273,28 @@ DEPENDENCY TREE
  |  |        | 
  |  |        +- MainComm             (see above)
  |  |           
- |  +- init_buffer_uart    
+ |  +- adns3080_init       
  |  |  | 
- |  |  +- _ICMP               
- |  |       
- |  +- uart_send           
+ |  |  +- adns3080_write      
+ |  |     | 
+ |  |     +- init_spi_buffer     
+ |  |     |  | 
+ |  |     |  +- _ICMP               
+ |  |     |       
+ |  |     +- spi_transfer        
+ |  |        | 
+ |  |        +- delai               
+ |  |        |    
+ |  |        +- _ICMP                (see above)
+ |  |           
+ |  +- adns3080_get_device 
  |     | 
- |     +- _ICMP                (see above)
- |        
+ |     +- adns3080_read       
+ |        | 
+ |        +- init_spi_buffer      (see above)
+ |        |  
+ |        +- spi_transfer         (see above)
+ |           
  +- _EntryPoint         
     | 
     +- _Startup            
@@ -1254,8 +1311,14 @@ DEPENDENCY TREE
  |    
  +- isr_uart_rx         
  |    
- +- ISR_IMU             
+ +- isr_update          
  |  | 
+ |  +- update_sensor       
+ |  |  | 
+ |  |  +- adns3080_read        (see above)
+ |  |     
+ |  +- uart_send           
+ |  |    
  |  +- mpu6050_update      
  |     | 
  |     +- mpu6050_get_acceleration
@@ -1317,5 +1380,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 8
-Total size of all blocks to be downloaded: 3924
+Total size of all blocks to be downloaded: 4430
 

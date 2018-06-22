@@ -3,8 +3,8 @@
   <Header>
     <Name>Robocup_SSL</Name>
     <SavedBy>offou</SavedBy>
-    <ModificationStamp>35</ModificationStamp>
-    <Date>2018-06-21</Date>
+    <ModificationStamp>36</ModificationStamp>
+    <Date>2018-06-22</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.9.2.RT6_b1446-0504</PEversion>
   </Header>
@@ -9275,12 +9275,12 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>2000</Value>
+        <Value>6000</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
         <ItemSymbol>Period</ItemSymbol>
-        <Value>10.177 ms</Value>
+        <Value>30.522 ms</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>CPUImpGrp</ItemSymbol>
@@ -9370,7 +9370,7 @@
         <ItemSymbol>ISRNameInt</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ISR_IMU</Value>
+        <Value>isr_update</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Fantom</ItemSymbol>

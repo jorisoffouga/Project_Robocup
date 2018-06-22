@@ -783,7 +783,7 @@ asm(BGND);
         </group>
       </group>
       <group name="Initialization">
-        <Call_Init_method v="yes" />
+        <Call_Init_method v="no" />
         <Enable_module v="yes" />
       </group>
     </Properties>

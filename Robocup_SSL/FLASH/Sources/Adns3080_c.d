@@ -1,4 +1,5 @@
 
+
 Sources/Adns3080_c.obj: \
 	D:/Project_Robocup/Robocup_SSL/Project_Headers/../Sources/Adns3080.c \
 	D:/Project_Robocup/Robocup_SSL/Project_Headers/Adns3080.h \
