@@ -34,8 +34,8 @@
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
-#include "CI2C1.h"
 #include "SCI1.h"
+#include "CI2C1.h"
 #include "TPM1.h"
 
 

@@ -62,5 +62,4 @@ void mpu6050_get_temp(mpu6050_t *mpu6050);
 void MPU6050_write(unsigned short*data);
 void MPU6050_read(unsigned char reg, unsigned char *data);
 
-
 #endif /* MPU6050_H_ */

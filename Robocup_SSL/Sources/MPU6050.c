@@ -8,7 +8,7 @@
 #include "FP3.h"
 #include "MPU6050.h"
 #include "CI2C1.h"
-
+#include <math.h>
 
 static signed short forme_value(unsigned char val_h, unsigned char val_l);
 union{
@@ -77,19 +77,19 @@ void mpu6050_get_gyro(mpu6050_t *mpu6050){
   MPU6050_read(MPU6050_GYRO_XH,&val_h);
   MPU6050_read(MPU6050_GYRO_XL,&val_l);
   mpu6050->gx=forme_value(val_h,val_l);
-  //mpu6050->gx=mpu6050->gx / SENSITIVITY_GYRO;
+  mpu6050->gx=mpu6050->gx / SENSITIVITY_GYRO;
 
   // Reception register gyroscope Y 
   MPU6050_read(MPU6050_GYRO_YH,&val_h);
   MPU6050_read(MPU6050_GYRO_YL,&val_l);
   mpu6050->gy=forme_value(val_h,val_l);
-  //mpu6050->gy=mpu6050->gy / SENSITIVITY_GYRO;
+  mpu6050->gy=mpu6050->gy / SENSITIVITY_GYRO;
 
   // Reception register gyroscope Z 
   MPU6050_read(MPU6050_GYRO_ZH,&val_h);
   MPU6050_read(MPU6050_GYRO_ZH,&val_l);
   mpu6050->gz=forme_value(val_h,val_l);
-  //mpu6050->gz=mpu6050->gz / SENSITIVITY_GYRO;
+  mpu6050->gz=mpu6050->gz / SENSITIVITY_GYRO;
   
 }
 
@@ -132,4 +132,5 @@ static signed short forme_value(unsigned char val_h, unsigned char val_l){
   return value.data;
 
 }
+
 

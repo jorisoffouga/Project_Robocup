@@ -41,8 +41,9 @@ void update_burst(adns3080 *sensor){
   adns3080_read(sensor,MOTION_BURST,3);
   sensor->motion=sensor->adns3080.buffer[6];
   if (sensor->motion & 0x80) {
+      sensor->overflow_status=no_overflow;
       sensor->dx=sensor->adns3080.buffer[7];
-      sensor->dx=sensor->adns3080.buffer[8];
+      sensor->dy=sensor->adns3080.buffer[8];
   }
   else if(sensor->motion & 0x10){
       sensor->overflow_status=overlflow;

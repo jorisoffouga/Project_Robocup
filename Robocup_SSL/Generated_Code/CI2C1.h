@@ -6,7 +6,7 @@
 **     Component   : InternalI2C
 **     Version     : Component 01.287, Driver 01.28, CPU db: 3.00.027
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2018-06-12, 10:55, # CodeGen: 3
+**     Date/Time   : 2018-06-21, 08:54, # CodeGen: 29
 **     Abstract    :
 **          This component encapsulates the internal I2C communication 
 **          interface. The implementation of the interface is based 
@@ -34,7 +34,7 @@
 **
 **         Initialization
 **
-**             Target slave address    : 8
+**             Target slave address    : 104
 **             Component init          : Enabled
 **             Events                  : Enabled
 **

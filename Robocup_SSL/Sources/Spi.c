@@ -11,7 +11,7 @@
 extern void delai(unsigned short time);
 
 void spi_init(enum spi_enable status_spi, enum mode_spi spi_mode, enum polarity tpolarity, enum phase tphase, 
-    enum type_data tdata, enum slave_mode smode, enum master_mode mmode, enum baudrate speed){
+    enum type_data tdata, enum ssoe smode, enum ss mmode, enum baudrate speed){
   SPIBR=speed;
   SPIC2_MODFEN=mmode;
   SPIC1_SSOE=smode;

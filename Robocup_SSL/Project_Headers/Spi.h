@@ -21,7 +21,7 @@ enum type_data {msb, lsb};
 enum ssoe {manual, auto_};
 enum modfen {disable_mode, enable_mode};
 enum baudrate_divisor{rate_divisor_2,rate_divisor_4,rate_divisor_8,rate_divisor_16,rate_divisor_32,rate_divisor_64,rate_divisor_128,rate_divisor_256,rate_divisor_512}; 
-
+enum ss {i_o,auto__};
 typedef struct{
   unsigned char buffer[NB_DATA];
   unsigned char *p_write;
@@ -30,7 +30,7 @@ typedef struct{
 }spi;
 
 void spi_init(enum spi_enable status_spi, enum mode_spi spi_mode, enum polarity tpolarity, enum phase tphase, 
-    enum type_data tdata, enum slave_mode smode, enum master_mode mmode, enum baudrate speed);
+    enum type_data tdata, enum ssoe smode, enum ss mmode, enum baudrate speed);
 
 void init_spi_buffer(spi *spi_buffer,unsigned char *buffer,unsigned char nb_data);
 void spi_transfer(spi *spi_buffer);

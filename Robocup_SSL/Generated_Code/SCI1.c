@@ -6,7 +6,7 @@
 **     Component   : Init_SCI
 **     Version     : Component 01.155, Driver 01.22, CPU db: 3.00.027
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2018-06-12, 10:55, # CodeGen: 2
+**     Date/Time   : 2018-06-21, 08:54, # CodeGen: 29
 **     Abstract    :
 **          This component encapsulates Serial Communications Interface module
 **          This modules allows asynchronous communications with peripheral

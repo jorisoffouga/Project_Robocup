@@ -7,7 +7,7 @@
 **     Version     : Component 01.005, Driver 01.40, CPU db: 3.00.027
 **     Datasheet   : MC9S08QE32RM Rev. 3 Draft A 11/2009
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2018-06-12, 17:44, # CodeGen: 7
+**     Date/Time   : 2018-06-21, 09:41, # CodeGen: 33
 **     Abstract    :
 **         This component "MC9S08QE32_32" contains initialization 
 **         of the CPU and provides basic methods and events for 
@@ -66,8 +66,8 @@
 
 #pragma MESSAGE DISABLE C4002 /* WARNING C4002: Result not used is ignored */
 
-#include "CI2C1.h"
 #include "SCI1.h"
+#include "CI2C1.h"
 #include "TPM1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -226,15 +226,18 @@ void PE_low_level_init(void)
   /* PTEDD: PTEDD7=1,PTEDD6=1,PTEDD5=1,PTEDD4=1,PTEDD3=1,PTEDD2=1,PTEDD1=1,PTEDD0=1 */
   setReg8(PTEDD, 0xFFU);                
   /* ### Shared modules init code ... */
-  /* ### InternalI2C "CI2C1" init code ... */
-  CI2C1_Init();
   /* ### Init_SCI "SCI1" init code ... */
   /* ### Call "SCI1_Init();" init method in a user code, i.e. in the main code */
   /* ### Note:   To enable automatic calling of the "SCI1" init code here must be
                  set the property Call Init method to 'yes'.
    */
+  /* ### InternalI2C "CI2C1" init code ... */
+  CI2C1_Init();
   /* ### Init_TPM "TPM1" init code ... */
-  TPM1_Init();
+  /* ### Call "TPM1_Init();" init method in a user code, i.e. in the main code */
+  /* ### Note:   To enable automatic calling of the "TPM1" init code here must be
+                 set the property 'Call Init method' to 'yes'
+   */
   CCR_lock = (byte)0;
   __EI();                              /* Enable interrupts */
 }
