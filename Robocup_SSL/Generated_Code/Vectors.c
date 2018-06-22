@@ -5,7 +5,7 @@
 **     Processor   : MC9S08QE16CLC
 **     Version     : Component 01.005, Driver 01.40, CPU db: 3.00.027
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2018-06-21, 08:44, # CodeGen: 25
+**     Date/Time   : 2018-06-22, 12:58, # CodeGen: 35
 **     Abstract    :
 **         This component "MC9S08QE32_32" contains initialization 
 **         of the CPU and provides basic methods and events for 
@@ -90,7 +90,7 @@ static void (* near const _vect[])(void) @0xFFC0 = { /* Interrupt vector table *
          Cpu_Interrupt,                /* Int.no. 10 Vtpm2ch2 (at FFEA)              Unassigned */
          Cpu_Interrupt,                /* Int.no.  9 Vtpm2ch1 (at FFEC)              Unassigned */
          Cpu_Interrupt,                /* Int.no.  8 Vtpm2ch0 (at FFEE)              Unassigned */
-         ISR_IMU,                      /* Int.no.  7 Vtpm1ovf (at FFF0)              Used */
+         isr_update,                   /* Int.no.  7 Vtpm1ovf (at FFF0)              Used */
          Cpu_Interrupt,                /* Int.no.  6 Vtpm1ch2 (at FFF2)              Unassigned */
          Cpu_Interrupt,                /* Int.no.  5 Vtpm1ch1 (at FFF4)              Unassigned */
          Cpu_Interrupt,                /* Int.no.  4 Vtpm1ch0 (at FFF6)              Unassigned */

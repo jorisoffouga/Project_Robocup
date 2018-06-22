@@ -6,7 +6,7 @@
 **     Component   : Init_TPM
 **     Version     : Component 01.084, Driver 01.20, CPU db: 3.00.027
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2018-06-21, 09:41, # CodeGen: 33
+**     Date/Time   : 2018-06-22, 12:58, # CodeGen: 35
 **     Abstract    :
 **          This file implements the TPM (TPM1) module initialization
 **          according to the Peripheral Initialization Component settings,
@@ -18,8 +18,8 @@
 **            Clock settings                               : 
 **              Clock source select                        : Bus rate clock
 **              Prescaler                                  : 128
-**              Modulo counter                             : 2000
-**              Period                                     : 10.177 ms
+**              Modulo counter                             : 6000
+**              Period                                     : 30.522 ms
 **            Channels                                     : 0
 **          Pins                                           : 
 **            External clock source                        : Disabled
@@ -27,7 +27,7 @@
 **            Overflow Interrupt                           : 
 **              Interrupt                                  : Vtpm1ovf
 **              Overflow Interrupt                         : Enabled
-**              ISR name                                   : ISR_IMU
+**              ISR name                                   : isr_update
 **          Initialization                                 : 
 **            Call Init method                             : no
 **            Enable module                                : yes
@@ -96,7 +96,7 @@
 **      Events.c
 **
 ** ###################################################################
-      ISR(ISR_IMU)
+      ISR(isr_update)
       {
       // NOTE: The routine should include the following actions to obtain
       //       correct functionality of the hardware.
@@ -125,7 +125,7 @@ void TPM1_Init(void)
 {
   /* TPM1SC: TOF=0,TOIE=0,CPWMS=0,CLKSB=0,CLKSA=0,PS2=0,PS1=0,PS0=0 */
   setReg8(TPM1SC, 0x00U);              /* Stop and reset counter */ 
-  setReg16(TPM1MOD, 0x07D0U);          /* Period value setting */ 
+  setReg16(TPM1MOD, 0x1770U);          /* Period value setting */ 
   (void)getReg8(TPM1SC);               /* Overflow int. flag clearing (first part) */
   /* TPM1SC: TOF=0,TOIE=1,CPWMS=0,CLKSB=0,CLKSA=1,PS2=1,PS1=1,PS0=1 */
   setReg8(TPM1SC, 0x4FU);              /* Int. flag clearing (2nd part) and timer control register setting */ 
