@@ -7,7 +7,7 @@
 **     Version     : Component 01.005, Driver 01.40, CPU db: 3.00.027
 **     Datasheet   : MC9S08QE32RM Rev. 3 Draft A 11/2009
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2018-06-21, 09:41, # CodeGen: 33
+**     Date/Time   : 2018-06-22, 17:11, # CodeGen: 36
 **     Abstract    :
 **         This component "MC9S08QE32_32" contains initialization 
 **         of the CPU and provides basic methods and events for 
@@ -234,10 +234,7 @@ void PE_low_level_init(void)
   /* ### InternalI2C "CI2C1" init code ... */
   CI2C1_Init();
   /* ### Init_TPM "TPM1" init code ... */
-  /* ### Call "TPM1_Init();" init method in a user code, i.e. in the main code */
-  /* ### Note:   To enable automatic calling of the "TPM1" init code here must be
-                 set the property 'Call Init method' to 'yes'
-   */
+  TPM1_Init();
   CCR_lock = (byte)0;
   __EI();                              /* Enable interrupts */
 }

@@ -764,8 +764,8 @@ asm(BGND);
           </enumgroup>
           <TPM1_Clock_Gate v="Enabled" />
           <Prescaler v="128" />
-          <Modulo_counter v="2000" />
-          <Period v="10.177 ms" />
+          <Modulo_counter v="6000" />
+          <Period v="30.522 ms" />
         </group>
         <Aligned v="Edge" />
         <list name="Channels" v="0">
@@ -779,7 +779,7 @@ asm(BGND);
         <group name="Overflow Interrupt">
           <Interrupt v="Vtpm1ovf" />
           <Overflow_Interrupt v="Enabled" />
-          <ISR_name v="ISR_IMU" />
+          <ISR_name v="isr_update" />
         </group>
       </group>
       <group name="Initialization">

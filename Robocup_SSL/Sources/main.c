@@ -48,6 +48,7 @@ extern uart_type uart_isr;
 //static unsigned short ay=0,az=0,ax=0,gx=0,gy=0,gz=0;
 
 ISR(isr_update){
+ 
   Ncs_1=0;
   update_sensor(&sensor_1);
   Ncs_1=1;
@@ -91,7 +92,7 @@ void main(void){
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
-  uart_init(9600, huit_bits, off_pe, on_te, on_re);
+  uart_init(9024, huit_bits, off_pe, on_te, on_re);
   spi_init(enable, master, low, middle_front, msb, manual, i_o, rate_divisor_8);
   mpu6050_init();
   mpu6050_get_device(&mpu6050);

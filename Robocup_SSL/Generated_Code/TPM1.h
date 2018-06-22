@@ -6,7 +6,7 @@
 **     Component   : Init_TPM
 **     Version     : Component 01.084, Driver 01.20, CPU db: 3.00.027
 **     Compiler    : CodeWarrior HCS08 C Compiler
-**     Date/Time   : 2018-06-22, 12:58, # CodeGen: 35
+**     Date/Time   : 2018-06-22, 17:11, # CodeGen: 36
 **     Abstract    :
 **          This file implements the TPM (TPM1) module initialization
 **          according to the Peripheral Initialization Component settings,
@@ -29,7 +29,7 @@
 **              Overflow Interrupt                         : Enabled
 **              ISR name                                   : isr_update
 **          Initialization                                 : 
-**            Call Init method                             : no
+**            Call Init method                             : yes
 **            Enable module                                : yes
 **     Contents    :
 **         Init - void TPM1_Init(void);
