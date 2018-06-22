@@ -49,8 +49,8 @@ void filter(unsigned short ax, unsigned short ay, unsigned short az, unsigned sh
     double *angleX, double *angleY, double *angleZ);
 
 typedef struct {
-	unsigned char dx;
-	unsigned char dy;
+	signed char dx;
+	signed char dy;
 }mouse_sensor;
 
 typedef struct {

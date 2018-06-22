@@ -65,9 +65,26 @@ int main(int argc, char *agrv[])
         mpu6050.gx=forme_value(buffer[10],buffer[11]);
         mpu6050.gy=forme_value(buffer[12],buffer[13]);
         mpu6050.gz=forme_value(buffer[14],buffer[15]);
-        //printf("%s ", buffer);
-        //scanf("%10s", message);
-        //printf("%s",message);
+
+        printf("Action des Capteurs Optiques \n");
+        printf("Capteur Optique 1 : \n \t");
+        printf("%c \n \t",sensor_1.dx);
+        printf("%c\n \t",sensor_1.dy);
+        printf("|=================================================================|\n");
+
+        printf("Capteur Optique 2 : \n \t");
+        printf("%c \n \t",sensor_2.dx);
+        printf("%c\n \t",sensor_2.dy);
+        printf("|=================================================================|\n");
+
+        printf("IMU \n");
+        printf("Axe accélero X %d \n \t",mpu6050.ax);
+        printf("Axe accéléro Y %d \n \t",mpu6050.ay);
+        printf("Axe accéléro Z %d \n \t",mpu6050.az);
+        printf("Axe gryo X %d \n \t",mpu6050.gx);
+        printf("Axe gyro Y %d \n \t",mpu6050.gy);
+        printf("Axe gyro Z %d \n \t",mpu6050.gz);
+        printf("|=================================================================|\n");
 
         fflush(stdout);
         usleep(100000);
